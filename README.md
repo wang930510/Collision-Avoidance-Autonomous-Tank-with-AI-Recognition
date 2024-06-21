@@ -20,5 +20,34 @@ _**Our product, named "AI-Enhanced Collision-Avoidance Remote-Controlled Autonom
 ## System Diagram
 <p><img width="50%" height="50%" src="https://github.com/wang930510/Collision-Avoidance-Autonomous-Tank-with-AI-Recognition/assets/136217880/d0a45b2b-73d9-43c2-9a99-4ab14358ad4e"></p>
 
+<p><img width="50%" height="50%" src="https://github.com/wang930510/Collision-Avoidance-Autonomous-Tank-with-AI-Recognition/assets/136217880/c926af5f-4200-4ffe-888b-fdd930b07bfd"></p>
 
-  
+## Implementation
+### Server: 
+code:<br>
+[AmebaPro2_Whisper_LlavaNext_server.py](https://github.com/rkuo2000/Arduino/blob/7b27c19c8d924dda0ef92c7febe82ba65bbf08fa/examples/AMB82-MINI/src/AmebaPro2_Whisper_LlavaNext_server.py#L4)
+``` @app.post("/asr")
+async def post_asr(data: Base64audio):
+    try:
+        # Save the decoded audio data to a MP4 file
+        decoded_data = base64.b64decode(data.base64_string)
+        with open("speech.mp4", "wb") as f:
+            f.write(decoded_data)
+
+        # Whisper transcribe
+        result = ASR.transcribe("speech.mp4",fp16=False)
+        header1 = "ASR:"
+        print(header1+result["text"])
+        return Response(header1+result["text"])
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+```
+
+## Demo Video
+### [藍芽遙控+AI辨識](https://www.youtube.com/watch?app=desktop&si=WUV3qTxEbcg9R8pC&v=CAePZU45b6w&feature=youtu.be) <br>
+<p><img width="50%" height="50%" src="https://github.com/wang930510/Collision-Avoidance-Autonomous-Tank-with-AI-Recognition/assets/136217880/0beb0b52-e42e-4d7f-88df-8242f30d5b5e"></p>
+
+### [飛時感測防撞](https://www.youtube.com/watch?v=PPgx732bsN8)<br>
+<p><img width="50%" height="50%" src="https://github.com/wang930510/Collision-Avoidance-Autonomous-Tank-with-AI-Recognition/assets/136217880/582ab8c6-3c15-49b3-a4f1-5403a086a6c5"></p>
+
+<br>
