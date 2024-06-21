@@ -28,14 +28,17 @@ _**Our product, named "AI-Enhanced Collision-Avoidance Remote-Controlled Autonom
 APP 提供了兩個 Channel 與四個 Channel 控制的版本，分別可以控制兩個伺服馬達或是四個伺服馬達。
 可相容於大部分的遙控車。您可以透過設定校正油門與方向的伺服馬達設定
 <p><img width="50%" height="50%" src="https://github.com/wang930510/portable-ChatGPT/assets/136217880/4232c339-5cee-47f0-96c5-441aa4103621"></p>
-**我們使用的模型是坦克:**
+
+**我們使用的模型是坦克:** <br>
 > 範例字串：SRT1000200015001500# 起始字串：SRT 上限：2000 (10進位) 中央：1500 (10進位) 下限：1000 (10進位)<br>
 > 圖形排列： 第一組4位數為左側水平控制，第二組4位數為左側垂直控制 第三組4位數為右側垂直控制，第四組4位數為右側水平控制
+> 
 ------------------------------------------
 #### **使用example:**
 
 #### [BLE - V7RC Car With Video Streaming](https://www.amebaiot.com/en/amebapro2-arduino-ble-v7rc/)
 -----------------------------------------------------------------------
+
 ##### **程式中透過手機搖桿控制數值，利用bleReciveData回傳各數值(value1,value2)去做邏輯判斷:**
 ```
 value1絕對值-1500及value2絕對值-1500皆小於100 (手沒做任何動作) 執行函式BrakeAll() //煞車 <br>
